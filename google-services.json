@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1061616085015",
+    "project_id": "helpdeskarth-a9505",
+    "storage_bucket": "helpdeskarth-a9505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061616085015:android:1155e0f1588fe4b30bd452",
+        "android_client_info": {
+          "package_name": "com.rosaarthur.deskhelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061616085015-vlvbmh5vkj48etnlqqr4jv0duvpj456n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRXOSeSpW3_Z51f3tYZMmCGxGk61mNENA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061616085015-vlvbmh5vkj48etnlqqr4jv0duvpj456n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1061616085015-u6cupcnfrj9isvkuh581matsitd1lft7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rosaarthur.deskhelp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

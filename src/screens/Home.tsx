@@ -8,7 +8,10 @@ import {
   FlatList,
   Center,
 } from "native-base";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Alert } from "react-native";
+import firestore from "@react-native-firebase/firestore";
+import auth from "@react-native-firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import { ChatTeardropText, SignOut } from "phosphor-react-native";
 import Logo from "../assets/logo_secondary.svg";
@@ -17,6 +20,7 @@ import { Order, OrderProps } from "../components/Order";
 import { Button } from "../components/Button";
 
 export function Home() {
+  const [loading, setIsLoading] = useState(false);
   const [statusSelected, setStatusSelected] = useState<"open" | "closed">(
     "open"
   );
@@ -39,6 +43,28 @@ export function Home() {
     navigation.navigate("details", { orderId });
   }
 
+  function handleLogout() {
+    auth()
+      .signOut()
+      .catch((e) => {
+        console.log(e);
+        return Alert.alert("Sair", "Não foi possível sair");
+      });
+  }
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const subscriber = firestore()
+      .collection("orders")
+      .where("status", "==", statusSelected)
+      .onSnapshot((snapchot) => {
+        const data = snapchot.docs.map((doc) => {
+          const { patrimony, description, status, created_at } = doc.data();
+        });
+      });
+  }, []);
+
   return (
     <VStack flex={1} pb={6} bg="gray.700">
       <HStack
@@ -51,7 +77,10 @@ export function Home() {
         px={6}
       >
         <Logo />
-        <IconButton icon={<SignOut size={26} color={colors.gray[300]} />} />
+        <IconButton
+          icon={<SignOut size={26} color={colors.gray[300]} />}
+          onPress={handleLogout}
+        />
       </HStack>
       <VStack flex={1} px={6}>
         <HStack
